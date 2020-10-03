@@ -55,11 +55,9 @@ const listSchema = {
 
 const List = mongoose.model("List", listSchema);
 
-
+const day = date.getDate();
 
 app.get("/", function(req, res) {
-
-  const day = date.getDate();
 
   Item.find({}, function(err, foundItems) {
 
@@ -122,7 +120,7 @@ app.post("/", function(req, res) {
     name: itemName
   });
 
-  if (listName === "Today") {
+  if (listName === day) {
     item.save();
     res.redirect("/");
 
@@ -147,7 +145,7 @@ app.post("/delete", function(req, res) {
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
 
-  if (listName === "Today") {
+  if (listName === day) {
     Item.findByIdAndDelete(checkedItemId, function(err) {
       if (err) {
         console.log(err);
