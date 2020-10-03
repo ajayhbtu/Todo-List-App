@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const date = require(__dirname + "/date.js");
-const secret = require(__dirname + "/secrets.js");
+// const secret = require(__dirname + "/secrets.js");
 
 
 const app = express();
