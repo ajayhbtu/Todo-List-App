@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-const usrname = secret.authCred.username || process.env.USERNAME;
-const pswrd = secret.authCred.password || process.env.PASSWORD;
+const usrname = process.env.USERNAME || secret.authCred.username;
+const pswrd = process.env.PASSWORD || secret.authCred.password;
 
 mongoose.connect("mongodb+srv://" + usrname + ":" + pswrd +"@cluster0.6lxda.mongodb.net/todolistDB", {
   useNewUrlParser: true,
